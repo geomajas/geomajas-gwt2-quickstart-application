@@ -1,0 +1,50 @@
+<!--
+  ~ This is part of Geomajas, a GIS framework, http://www.geomajas.org/.
+  ~
+  ~ Copyright 2008-2013 Geosparc nv, http://www.geosparc.com/, Belgium.
+  ~
+  ~ The program is available in open source according to the GNU Affero
+  ~ General Public License. All contributions in this program are covered
+  ~ by the Geomajas Contributors License Agreement. For full licensing
+  ~ details, see LICENSE.txt in the project root.
+  -->
+
+<Configure class="org.mortbay.jetty.webapp.WebAppContext">
+
+	<Set name="serverClasses">
+		<Array type="java.lang.String">
+
+			<!-- remove slf4j from server classes -->
+			<Item>-org.slf4j.</Item>
+
+		</Array>
+	</Set>
+
+	<Set name="systemClasses">
+		<Array type="java.lang.String">
+
+			<!--
+				we copied these paths from jetty WebAppContext source code ...
+			-->
+			<Item>java.</Item>
+			<Item>javax.servlet.</Item>
+			<Item>javax.xml.</Item>
+			<Item>org.mortbay.</Item>
+			<Item>org.xml.</Item>
+			<Item>org.w3c.</Item>
+			<Item>org.apache.commons.logging.</Item>
+			<Item>org.apache.log4j.</Item>
+
+			<!-- and ... added slf4j -->
+			<Item>org.slf4j.</Item>
+
+			<!--
+				we must promote slf4j to system classes, otherwise gwt hosted mode
+				will not allow loading them due to a policy that don't allow server
+				classes to be loaded from the outside world (see gwt JettyLauncher
+				source code).
+			-->
+
+		</Array>
+	</Set>
+</Configure>

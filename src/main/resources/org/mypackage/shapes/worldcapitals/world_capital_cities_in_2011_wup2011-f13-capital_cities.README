@@ -1,0 +1,22 @@
+World capital cities in 2011 (wup2011-f13-capital cities)
+
+Population of capital cities in 2011.
+
+Source: United Nations, Department of Economic and Social Affairs, Population Division (2012). World Urbanization Prospects: The 2011 Revision, CD-ROM Edition. http://esa.un.org/unpd/wup/
+POP/DB/WUP/Rev.2011/2/F13. File 13: Population of Capital Cities in 2011,
+
+Note: The geographical coordinates and names shown and the designations used on this map do not imply official endorsement or acceptance by the United Nations. The designations employed and the presentation of material on this map do not imply the expression of any opinion whatsoever on the part of the Secretariat of the United Nations concerning the legal status of any country, territory, city or area or of its authorities, or concerning the delimitation of its frontiers or boundaries.
+
+
+Attributes:
+POP2011: Pop2011 - Number of inhabitants in mid-2011
+LONGITUDE: Longitude - 
+CITYNAME: City name - 
+LATITUDE: Latitude - 
+CITYCODE: City code - 
+CAPITALTYP: Capital Type - 
+NOTE: Note - 
+CTRYNAME: Country name - 
+CTRYCODE: Country code - Numerical Location Code (3-digit codes following ISO 3166-1 numeric standard) - see http://en.wikipedia.org/wiki/ISO_3166-1_numeric
+
+exported on Sat Nov 17 01:47:35 -0500 2012

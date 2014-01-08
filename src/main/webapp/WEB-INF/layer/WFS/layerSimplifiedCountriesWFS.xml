@@ -1,0 +1,98 @@
+<!--
+  ~ This is part of Geomajas, a GIS framework, http://www.geomajas.org/.
+  ~
+  ~ Copyright 2008-2013 Geosparc nv, http://www.geosparc.com/, Belgium.
+  ~
+  ~ The program is available in open source according to the GNU Affero
+  ~ General Public License. All contributions in this program are covered
+  ~ by the Geomajas Contributors License Agreement. For full licensing
+  ~ details, see LICENSE.txt in the project root.
+  -->
+
+<beans
+        xmlns="http://www.springframework.org/schema/beans"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns:context="http://www.springframework.org/schema/context"
+        xsi:schemaLocation="
+http://www.springframework.org/schema/beans
+http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+http://www.springframework.org/schema/context
+http://www.springframework.org/schema/context/spring-context-2.5.xsd"
+        >
+
+    <bean name="layerSimplifiedCountriesWfs" class="org.geomajas.layer.geotools.GeoToolsLayer">
+        <property name="parameters">
+            <list>
+                <bean class="org.geomajas.configuration.Parameter">
+                    <property name="name" value="WFSDataStoreFactory:GET_CAPABILITIES_URL" />
+                    <property name="value" value="http://apps.geomajas.org/geoserver/geomajas/wfs?service=WFS&amp;VERSION&#61;1.1.0&amp;request&#61;GetCapabilities" />
+                </bean>
+                <bean class="org.geomajas.configuration.Parameter">
+                    <property name="name" value="WFSDataStoreFactory:TIMEOUT" />
+                    <property name="value" value="5000" />
+                </bean>
+            </list>
+        </property>
+        <property name="layerInfo" ref="layerSimplifiedCountriesInfo" />
+    </bean>
+
+    <bean name="layerSimplifiedCountriesInfo" class="org.geomajas.configuration.VectorLayerInfo">
+        <property name="layerType" value="MULTIPOLYGON"/>
+        <property name="crs" value="EPSG:4326"/>
+        <property name="maxExtent">
+            <bean class="org.geomajas.geometry.Bbox">
+                <property name="x" value="-180"/>
+                <property name="y" value="-85"/>
+                <property name="width" value="360"/>
+                <property name="height" value="170"/>
+            </bean>
+        </property>
+        <property name="featureInfo" ref="layerSimplifiedCountriesFeatureInfo" />
+        <property name="namedStyleInfos">
+            <list>
+                <ref bean="layerSimplifiedCountriesStyleInfo" />
+            </list>
+        </property>
+    </bean>
+
+    <bean class="org.geomajas.configuration.FeatureInfo" name="layerSimplifiedCountriesFeatureInfo">
+        <property name="dataSourceName" value="geomajas:simplified_country_borders"/>
+        <property name="identifier">
+            <bean class="org.geomajas.configuration.PrimitiveAttributeInfo">
+                <property name="label" value="ID"/>
+                <property name="name" value="UN"/>
+                <property name="type" value="INTEGER"/>
+            </bean>
+        </property>
+        <property name="geometryType">
+            <bean class="org.geomajas.configuration.GeometryAttributeInfo">
+                <property name="name" value="the_geom"/>
+                <property name="editable" value="false"/>
+            </bean>
+        </property>
+
+        <property name="attributes">
+            <list>
+                <bean class="org.geomajas.configuration.PrimitiveAttributeInfo">
+                    <property name="label" value="Name"/>
+                    <property name="name" value="NAME"/>
+                    <property name="editable" value="true"/>
+                    <property name="identifying" value="true"/>
+                    <property name="type" value="STRING"/>
+                </bean>
+                <bean class="org.geomajas.configuration.PrimitiveAttributeInfo">
+                    <property name="label" value="Population"/>
+                    <property name="name" value="POP2005"/>
+                    <property name="editable" value="false"/>
+                    <property name="identifying" value="true"/>
+                    <property name="type" value="INTEGER"/>
+                </bean>
+            </list>
+        </property>
+    </bean>
+
+    <bean class="org.geomajas.configuration.NamedStyleInfo" name="layerSimplifiedCountriesStyleInfo">
+        <property name="sldLocation" value="WEB-INF/layer/layerSimplifiedCountries.sld" />
+    </bean>
+
+</beans>

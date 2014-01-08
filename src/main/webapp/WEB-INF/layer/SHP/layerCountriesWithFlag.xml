@@ -1,0 +1,139 @@
+<!--
+  ~ This is part of Geomajas, a GIS framework, http://www.geomajas.org/.
+  ~
+  ~ Copyright 2008-2013 Geosparc nv, http://www.geosparc.com/, Belgium.
+  ~
+  ~ The program is available in open source according to the GNU Affero
+  ~ General Public License. All contributions in this program are covered
+  ~ by the Geomajas Contributors License Agreement. For full licensing
+  ~ details, see LICENSE.txt in the project root.
+  -->
+
+<beans
+		xmlns="http://www.springframework.org/schema/beans"
+		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		xmlns:context="http://www.springframework.org/schema/context"
+		xsi:schemaLocation="
+http://www.springframework.org/schema/beans
+http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+http://www.springframework.org/schema/context
+http://www.springframework.org/schema/context/spring-context-2.5.xsd"
+		>
+
+	<bean name="layerCountriesWithFlag" class="org.geomajas.layer.shapeinmem.ShapeInMemLayer">
+		<property name="layerInfo" ref="layerCountriesWithFlagInfo" />
+        <property name="url"
+				  value="classpath:org/mypackage/shapes/countrieswithflag/ne_10m_admin_0_countries.shp"/>
+	</bean>
+
+	<bean name="layerCountriesWithFlagInfo" class="org.geomajas.configuration.VectorLayerInfo">
+		<property name="layerType" value="MULTIPOLYGON"/>
+		<property name="crs" value="EPSG:4326"/>
+		<property name="maxExtent">
+			<bean class="org.geomajas.geometry.Bbox">
+                <property name="x" value="-180"/>
+                <property name="y" value="-85"/>
+                <property name="width" value="360"/>
+                <property name="height" value="170"/>
+			</bean>
+		</property>
+		<property name="featureInfo" ref="layerCountriesWithFlagFeatureInfo" />
+		<property name="namedStyleInfos">
+			<list>
+				<ref bean="layerCountriesWithFlagStyleInfo" />
+			</list>
+		</property>
+	</bean>
+
+    <bean name="layerCountriesWithFlagFeatureInfo" class="org.geomajas.configuration.FeatureInfo">
+        <property name="dataSourceName" value="ne_10m_admin_0_countries"/>
+        <property name="identifier">
+            <bean class="org.geomajas.configuration.PrimitiveAttributeInfo">
+                <property name="label" value="ID"/>
+                <property name="name" value="su_a3"/>
+                <property name="type" value="STRING"/>
+            </bean>
+        </property>
+        <property name="geometryType">
+            <bean class="org.geomajas.configuration.GeometryAttributeInfo">
+                <property name="name" value="the_geom"/>
+                <property name="editable" value="false"/>
+            </bean>
+        </property>
+
+        <property name="attributes">
+            <list>
+                <bean class="org.geomajas.configuration.PrimitiveAttributeInfo">
+                    <property name="label" value="Name"/>
+                    <property name="name" value="ADMIN"/>
+                    <property name="editable" value="false"/>
+                    <property name="identifying" value="true"/>
+                    <property name="type" value="STRING"/>
+                </bean>
+                <bean class="org.geomajas.configuration.PrimitiveAttributeInfo">
+                    <property name="label" value="Capital"/>
+                    <property name="name" value="CAPITAL"/>
+                    <property name="editable" value="false"/>
+                    <property name="identifying" value="true"/>
+                    <property name="type" value="STRING"/>
+                </bean>
+                <bean class="org.geomajas.configuration.PrimitiveAttributeInfo">
+                    <property name="label" value="Continent"/>
+                    <property name="name" value="CONTINENT"/>
+                    <property name="editable" value="false"/>
+                    <property name="identifying" value="false"/>
+                    <property name="type" value="STRING"/>
+                </bean>
+                <bean class="org.geomajas.configuration.PrimitiveAttributeInfo">
+                    <property name="label" value="Subregion"/>
+                    <property name="name" value="SUBREGION"/>
+                    <property name="editable" value="false"/>
+                    <property name="identifying" value="false"/>
+                    <property name="type" value="STRING"/>
+                </bean>
+                <bean class="org.geomajas.configuration.PrimitiveAttributeInfo">
+                    <property name="label" value="Population"/>
+                    <property name="name" value="POP_WIKI"/>
+                    <property name="editable" value="false"/>
+                    <property name="identifying" value="false"/>
+                    <!--<property name="formInputType" value="%s km²"/>-->
+                    <property name="type" value="DOUBLE"/>
+                </bean>
+                <bean class="org.geomajas.configuration.PrimitiveAttributeInfo">
+                    <property name="label" value="Area (km²)"/>
+                    <property name="name" value="AREA_WIKI"/>
+                    <property name="editable" value="false"/>
+                    <property name="identifying" value="false"/>
+                    <property name="type" value="DOUBLE"/>
+                </bean>
+                <bean class="org.geomajas.configuration.PrimitiveAttributeInfo">
+                    <property name="label" value="Economy"/>
+                    <property name="name" value="ECONOMY"/>
+                    <property name="editable" value="false"/>
+                    <property name="identifying" value="false"/>
+                    <property name="type" value="STRING"/>
+                </bean>
+                <bean class="org.geomajas.configuration.PrimitiveAttributeInfo">
+                    <property name="label" value="Income"/>
+                    <property name="name" value="INCOME_GRP"/>
+                    <property name="editable" value="false"/>
+                    <property name="identifying" value="false"/>
+                    <property name="type" value="STRING"/>
+                </bean>
+                <bean class="org.geomajas.configuration.PrimitiveAttributeInfo">
+                    <property name="label" value="Flag"/>
+                    <property name="name" value="FLAG200"/>
+                    <property name="editable" value="false"/>
+                    <property name="identifying" value="false"/>
+                    <!--<property name="hidden" value="true"/>-->
+                    <property name="type" value="IMGURL"/>
+                </bean>
+            </list>
+        </property>
+    </bean>
+
+	<bean class="org.geomajas.configuration.NamedStyleInfo" name="layerCountriesWithFlagStyleInfo">
+		<property name="sldLocation" value="WEB-INF/layer/layerCountriesWithFlagPopulation.sld" />
+	</bean>
+
+</beans>

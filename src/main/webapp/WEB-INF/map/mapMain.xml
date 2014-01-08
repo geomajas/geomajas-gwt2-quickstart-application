@@ -1,0 +1,93 @@
+<!--
+  ~ This is part of Geomajas, a GIS framework, http://www.geomajas.org/.
+  ~
+  ~ Copyright 2008-2013 Geosparc nv, http://www.geosparc.com/, Belgium.
+  ~
+  ~ The program is available in open source according to the GNU Affero
+  ~ General Public License. All contributions in this program are covered
+  ~ by the Geomajas Contributors License Agreement. For full licensing
+  ~ details, see LICENSE.txt in the project root.
+  -->
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	   xmlns:util="http://www.springframework.org/schema/util"
+	   xsi:schemaLocation="
+http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-2.0.xsd">
+
+	<bean name="mapMain" class="org.geomajas.configuration.client.ClientMapInfo">
+		<property name="backgroundColor" value="#FFFFFF" />
+		<property name="lineSelectStyle">
+			<bean class="org.geomajas.configuration.FeatureStyleInfo">
+				<property name="fillOpacity" value="0" />
+				<property name="strokeColor" value="#FF6600" />
+				<property name="strokeOpacity" value="1" />
+			</bean>
+		</property>
+		<property name="pointSelectStyle">
+			<bean class="org.geomajas.configuration.FeatureStyleInfo">
+				<property name="fillColor" value="#FFFF00" />
+			</bean>
+		</property>
+		<property name="polygonSelectStyle">
+			<bean class="org.geomajas.configuration.FeatureStyleInfo">
+				<property name="fillColor" value="#FFFF00" />
+				<property name="fillOpacity" value=".5" />
+			</bean>
+		</property>
+		<property name="crs" value="EPSG:900913" />
+		<property name="scaleBarEnabled" value="true" />
+		<property name="panButtonsEnabled" value="false" />
+		<property name="scaleConfiguration">
+			<bean class="org.geomajas.configuration.client.ScaleConfigurationInfo">
+				<!--<property name="maximumScale" value="1:10000" />-->
+				<property name="zoomLevels">
+					<list>
+						<value>6.388019798183263E-6</value>
+						<value>1.2776039596366526E-5</value>
+						<value>2.555207919273305E-5</value>
+						<value>5.11041583854661E-5</value>
+						<value>1.022083167709322E-4</value>
+						<value>2.044166335418644E-4</value>
+						<value>4.088332670837288E-4</value>
+						<value>8.176665341674576E-4</value>
+						<value>0.0016353330683349153</value>
+						<value>0.0032706661366698306</value>
+						<value>0.006541332273339661</value>
+						<value>0.013082664546679322</value>
+						<value>0.026165329093358645</value>
+						<value>0.05233065818671729</value>
+						<value>0.10466131637343458</value>
+						<value>0.20932263274686916</value>
+						<value>0.4186452654937383</value>
+						<value>0.8372905309874766</value>
+						<value>1.6745810619749533</value>
+						<value>3.3491621239499065</value>
+						<value>6.698324247899813</value>
+					</list>
+				</property>
+			</bean>
+		</property>
+		<property name="initialBounds">
+			<bean class="org.geomajas.geometry.Bbox">
+				<property name="x" value="-1000000"/>
+				<property name="y" value="5000000"/>
+				<property name="width" value="4000000"/>
+				<property name="height" value="2000000"/>
+			</bean>
+		</property>
+		<property name="layers">
+			<list>
+				 <ref bean="clientLayerOsm" />
+                <!-- <ref bean="clientLayerSimplifiedCountriesTms" />     -->
+                <!--<ref bean="clientLayerSimplifiedCountriesWms" />-->
+                <!--<ref bean="clientLayerSimplifiedCountriesWfs" />-->
+                <!--<ref bean="clientLayerCountries" />-->
+                <ref bean="clientLayerCountriesWithFlag" />
+                <ref bean="clientLayerCities" />
+			</list>
+		</property>
+	</bean>
+
+</beans>

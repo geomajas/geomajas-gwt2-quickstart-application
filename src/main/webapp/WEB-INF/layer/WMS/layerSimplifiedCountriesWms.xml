@@ -1,0 +1,56 @@
+<!--
+  ~ This is part of Geomajas, a GIS framework, http://www.geomajas.org/.
+  ~
+  ~ Copyright 2008-2013 Geosparc nv, http://www.geosparc.com/, Belgium.
+  ~
+  ~ The program is available in open source according to the GNU Affero
+  ~ General Public License. All contributions in this program are covered
+  ~ by the Geomajas Contributors License Agreement. For full licensing
+  ~ details, see LICENSE.txt in the project root.
+  -->
+
+<beans
+        xmlns="http://www.springframework.org/schema/beans"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns:context="http://www.springframework.org/schema/context"
+        xsi:schemaLocation="
+http://www.springframework.org/schema/beans
+http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+http://www.springframework.org/schema/context
+http://www.springframework.org/schema/context/spring-context-2.5.xsd"
+        >
+
+    <bean name="layerSimplifiedCountriesWms" class="org.geomajas.layer.wms.WmsLayer">
+        <property name="layerInfo" ref="layerWmsInfo" />
+        <property name="baseWmsUrl" value="http://apps.geomajas.org/geoserver/geomajas/wms"/>
+        <property name="version" value="1.1.1"/>
+        <property name="format" value="image/jpeg"/>
+        <property name="styles" value=""/>
+        <!--<property name="useProxy" value="true"/>-->
+    </bean>
+
+    <bean name="layerWmsInfo" class="org.geomajas.configuration.RasterLayerInfo">
+        <!--<property name="crs" value="EPSG:4326"/>
+        <property name="maxExtent">
+            <bean class="org.geomajas.geometry.Bbox">
+                <property name="x" value="-180"/>
+                <property name="y" value="-90"/>
+                <property name="width" value="360"/>
+                <property name="height" value="180"/>
+            </bean>
+        </property>-->
+		<property name="crs" value="EPSG:900913"/>
+		<property name="maxExtent">
+			<bean class="org.geomajas.geometry.Bbox">
+				<property name="x" value="-20037508.3427892"/>
+				<property name="y" value="-20037508.3427892"/>
+				<property name="width" value="40075016.6855784"/>
+				<property name="height" value="40075016.6855784"/>
+			</bean>
+		</property>
+        <property name="dataSourceName" value="geomajas:simplified_country_borders" />
+        <property name="tileWidth" value="512"/>
+        <property name="tileHeight" value="512"/>
+    </bean>
+
+</beans>

@@ -1,0 +1,129 @@
+<!--
+  ~ This is part of Geomajas, a GIS framework, http://www.geomajas.org/.
+  ~
+  ~ Copyright 2008-2013 Geosparc nv, http://www.geosparc.com/, Belgium.
+  ~
+  ~ The program is available in open source according to the GNU Affero
+  ~ General Public License. All contributions in this program are covered
+  ~ by the Geomajas Contributors License Agreement. For full licensing
+  ~ details, see LICENSE.txt in the project root.
+  -->
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:util="http://www.springframework.org/schema/util" xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="
+http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-2.5.xsd
+http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-2.0.xsd
+http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.0.xsd
+http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.0.xsd">
+
+	<bean name="security.securityInfo" class="org.geomajas.security.SecurityInfo">
+		<property name="loopAllServices" value="false"/>
+		<property name="securityServices">
+			<list>
+                <!--start disable security-->
+                <bean class="org.geomajas.security.allowall.AllowAllSecurityService" />
+                <!--end disable security-->
+                <!--start enable security-->
+				<!--<bean class="org.geomajas.plugin.staticsecurity.security.StaticSecurityService"/>-->
+				<!--<bean class="org.geomajas.plugin.staticsecurity.security.LoginAllowedSecurityService"/>-->
+                <!--end enable security-->
+			</list>
+		</property>
+	</bean>
+
+<!--
+    <bean name="owner" class="org.geomajas.plugin.staticsecurity.configuration.NamedRoleInfo">
+        <property name="authorizations">
+            <list>
+                <bean class="org.geomajas.plugin.staticsecurity.configuration.LayerAuthorizationInfo">
+                    <property name="commandsInclude">
+                        <list>
+                            <value>.*</value>
+                        </list>
+                    </property>
+                    <property name="toolsInclude">
+                        <list>
+                            <value>.*</value>
+                        </list>
+                    </property>
+                    <property name="visibleLayersInclude">
+                        <list>
+                            <value>.*</value>
+                        </list>
+                    </property>
+                </bean>
+            </list>
+        </property>
+    </bean>
+
+    <bean name="guest" class="org.geomajas.plugin.staticsecurity.configuration.NamedRoleInfo">
+        <property name="authorizations">
+            <list>
+                <bean class="org.geomajas.plugin.staticsecurity.configuration.LayerFilterAuthorizationInfo">
+                    <property name="commandsInclude">
+                        <list>
+                            <value>.*</value>
+                        </list>
+                    </property>
+                    <property name="visibleLayersInclude">
+                        <list>
+                            &lt;!&ndash; change to visible &ndash;&gt;
+                            <value>layerCountries</value>
+                        </list>
+                    </property>
+                    <property name="filters">
+                        <map>
+                            <entry key="layerCountries" value="(PEOPLE > 50000000)"/>
+                        </map>
+                    </property>
+                </bean>
+            </list>
+        </property>
+    </bean>
+
+	<bean class="org.geomajas.plugin.staticsecurity.configuration.SecurityServiceInfo">
+		<property name="tokenLifetime" value="600" /> &lt;!&ndash; ten minutes &ndash;&gt;
+		<property name="users">
+			<list>
+				<bean class="org.geomajas.plugin.staticsecurity.configuration.UserInfo">
+					<property name="userId" value="luc"/>
+					<property name="password" value="b7NMSP1pZN3Hi6nJGVe9JA"/> &lt;!&ndash; "luc" &ndash;&gt;
+					<property name="userName" value="Luc Van Lierde"/>
+                    <property name="roles">
+                        <list>
+                            <ref bean="owner"/>
+                        </list>
+                    </property>
+				</bean>
+
+				<bean class="org.geomajas.plugin.staticsecurity.configuration.UserInfo">
+					<property name="userId" value="marino"/>
+					<property name="password" value="kMSqVf2EMWilIKhZyV3dKA"/> &lt;!&ndash; "marino" &ndash;&gt;
+					<property name="userName" value="Marino Van Hoenacker"/>
+                    <property name="roles">
+                        <list>
+                            <ref bean="guest"/>
+                        </list>
+                    </property>
+				</bean>
+				<bean class="org.geomajas.plugin.staticsecurity.configuration.UserInfo">
+					<property name="userId" value="empty"/>
+					<property name="password" value="fV4OclpOUTCXIXEOx1C6sQ"/> &lt;!&ndash; "" &ndash;&gt;
+					<property name="userName" value="Mr. Nobody"/>
+                    <property name="roles">
+                        <list>
+                            <ref bean="guest"/>
+                        </list>
+                    </property>
+				</bean>
+
+			</list>
+		</property>
+	</bean>
+-->
+
+</beans>

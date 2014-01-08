@@ -1,0 +1,104 @@
+<!--
+  ~ This is part of Geomajas, a GIS framework, http://www.geomajas.org/.
+  ~
+  ~ Copyright 2008-2013 Geosparc nv, http://www.geosparc.com/, Belgium.
+  ~
+  ~ The program is available in open source according to the GNU Affero
+  ~ General Public License. All contributions in this program are covered
+  ~ by the Geomajas Contributors License Agreement. For full licensing
+  ~ details, see LICENSE.txt in the project root.
+  -->
+
+<web-app
+	version="2.5"
+	xmlns="http://java.sun.com/xml/ns/javaee"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="
+		http://java.sun.com/xml/ns/javaee
+		http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
+	<display-name>Geomajas application</display-name>
+	<context-param>
+		<param-name>contextConfigLocation</param-name>
+		<param-value>
+			<!-- framework context -->
+			classpath:org/geomajas/spring/geomajasContext.xml
+			classpath:org/geomajas/plugin/rasterizing/DefaultCachedAndRasterizedPipelines.xml
+
+			<!-- application context -->
+			WEB-INF/applicationContext.xml
+			WEB-INF/tools.xml
+			WEB-INF/map/mapMain.xml
+
+			<!-- OSM layer -->
+			WEB-INF/layer/OSM/clientLayerOsm.xml
+			WEB-INF/layer/OSM/layerOsm.xml
+
+			<!-- TMS layer -->
+            WEB-INF/layer/TMS/clientLayerSimplifiedCountriesTms.xml
+            WEB-INF/layer/TMS/layerSimplifiedCountriesTms.xml
+
+			<!-- WMS layer -->
+            WEB-INF/layer/WMS/clientLayerSimplifiedCountriesWms.xml
+            WEB-INF/layer/WMS/layerSimplifiedCountriesWms.xml
+
+			<!-- WFS layer -->
+            <!--WEB-INF/layer/WFS/layerSimplifiedCountriesWFS.xml-->
+            <!--WEB-INF/layer/WFS/clientLayerSimplifiedCountriesWfs.xml-->
+
+			<!-- layers based on a SHP file -->
+			WEB-INF/layer/SHP/layerCountries.xml
+			WEB-INF/layer/SHP/clientLayerCountries.xml
+			WEB-INF/layer/SHP/layerCities.xml
+            WEB-INF/layer/SHP/clientLayerCities.xml
+            WEB-INF/layer/SHP/layerCountriesWithFlag.xml
+            WEB-INF/layer/SHP/clientLayerCountriesWithFlag.xml
+
+			<!-- security -->
+            WEB-INF/security.xml
+
+			</param-value>
+	</context-param>
+
+	<filter>
+	    <filter-name>CacheFilter</filter-name>
+	    <filter-class>org.geomajas.servlet.CacheFilter</filter-class>
+	</filter>
+
+	<filter-mapping>
+		<filter-name>CacheFilter</filter-name>
+		<url-pattern>*</url-pattern>
+	</filter-mapping>
+
+	<!-- only needed for direct GWT -->
+	<listener>
+		<listener-class>org.geomajas.servlet.PrepareScanningContextListener</listener-class>
+	</listener>
+
+	<listener>
+ 		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+	</listener>
+    <listener>
+         <listener-class>org.springframework.web.context.request.RequestContextListener</listener-class>
+    </listener>
+
+	<servlet>
+		<servlet-name>dispatcher</servlet-name>
+		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+		<init-param>
+			<description>Spring Web-MVC specific (additional) context files.</description>
+			<param-name>contextConfigLocation</param-name>
+			<param-value>classpath*:META-INF/geomajasWebContext.xml</param-value>
+		</init-param>
+		<load-on-startup>3</load-on-startup>
+	</servlet>
+
+    <servlet-mapping>
+        <servlet-name>dispatcher</servlet-name>
+        <url-pattern>/d/*</url-pattern>
+        <url-pattern>/application/*</url-pattern>
+    </servlet-mapping>
+
+	<welcome-file-list>
+		<welcome-file>index.html</welcome-file>
+	</welcome-file-list>
+</web-app>

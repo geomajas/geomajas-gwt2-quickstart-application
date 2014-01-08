@@ -1,0 +1,37 @@
+<!--
+  ~ This is part of Geomajas, a GIS framework, http://www.geomajas.org/.
+  ~
+  ~ Copyright 2008-2013 Geosparc nv, http://www.geosparc.com/, Belgium.
+  ~
+  ~ The program is available in open source according to the GNU Affero
+  ~ General Public License. All contributions in this program are covered
+  ~ by the Geomajas Contributors License Agreement. For full licensing
+  ~ details, see LICENSE.txt in the project root.
+  -->
+
+<beans
+		xmlns="http://www.springframework.org/schema/beans"
+		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		xsi:schemaLocation="
+http://www.springframework.org/schema/beans
+http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
+
+	<bean name="layerOsm" class="org.geomajas.layer.osm.OsmLayer" >
+		<property name="layerInfo" ref="layerOsmInfo" />
+	</bean>
+
+	<bean name="layerOsmInfo" class="org.geomajas.configuration.RasterLayerInfo">
+		<property name="crs" value="EPSG:900913"/>
+		<property name="maxExtent">
+			<bean class="org.geomajas.geometry.Bbox">
+				<property name="x" value="-20026376.393709917"/>
+				<property name="y" value="-20026376.393709917"/>
+				<property name="width" value="40052752.787419834"/>
+				<property name="height" value="40052752.787419834"/>
+			</bean>
+		</property>
+        <property name="tileWidth" value="256"/>
+        <property name="tileHeight" value="256"/>
+ 	</bean>
+
+</beans>
