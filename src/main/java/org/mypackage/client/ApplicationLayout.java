@@ -46,7 +46,7 @@ public class ApplicationLayout extends Composite {
 		mapPresenter = GeomajasImpl.getInstance().createMapPresenter();
 		mapPresenter.getEventBus().addMapInitializationHandler(new MyMapInitializationHandler());
 
-		GeomajasServerExtension.initializeMap(mapPresenter, "app", "mapMain");
+		GeomajasServerExtension.getInstance().initializeMap(mapPresenter, "app", "mapMain");
 
 		MapLayoutPanel mapLayoutPanel = new MapLayoutPanel();
 		mapLayoutPanel.setPresenter(mapPresenter);
