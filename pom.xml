@@ -365,6 +365,15 @@
 					</deployer>
 
 				</configuration>
+				<executions>
+					<execution>
+						<id>redeploy</id>
+						<phase>deploy</phase>
+						<goals>
+							<goal>redeploy</goal>
+						</goals>
+					</execution>
+				</executions>
 			</plugin>
 			
 
