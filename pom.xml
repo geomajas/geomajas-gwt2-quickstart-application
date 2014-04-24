@@ -327,6 +327,46 @@
 					</filesets>
 				</configuration>
 			</plugin>
+			
+			<!-- deploy to development server -->
+			<plugin>
+				<groupId>org.codehaus.cargo</groupId>
+				<artifactId>cargo-maven2-plugin</artifactId>
+				<version>1.2.1</version>
+
+				<configuration>
+
+					<!-- Container configuration -->
+					<container>
+						<containerId>tomcat7x</containerId>
+						<type>remote</type>
+					</container>
+
+					<!-- Configuration to use with the container -->
+					<configuration>
+						<type>runtime</type>
+						<properties>
+							<cargo.remote.username>${dev.deploy.username}</cargo.remote.username>
+							<cargo.remote.password>${dev.deploy.password}</cargo.remote.password>
+							<cargo.remote.uri>${dev.deploy.uri}</cargo.remote.uri>
+						</properties>
+					</configuration>
+					<deployer>
+						<deployables>
+							<deployable>
+								<groupId>org.mypackage</groupId>
+								<artifactId>myartifact</artifactId>
+								<type>war</type>
+								<properties>
+									<context>enduser-application-gwt2-trunk</context>
+								</properties>
+							</deployable>
+						</deployables>
+					</deployer>
+
+				</configuration>
+			</plugin>
+			
 
 		</plugins>
 		<pluginManagement>
@@ -362,6 +402,7 @@
 						</lifecycleMappingMetadata>
 					</configuration>
 				</plugin>
+				
 			</plugins>
 		</pluginManagement>
 	</build>
