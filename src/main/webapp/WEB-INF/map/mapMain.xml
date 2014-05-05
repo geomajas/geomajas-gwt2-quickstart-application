@@ -71,21 +71,22 @@ http://www.springframework.org/schema/util http://www.springframework.org/schema
 		</property>
 		<property name="initialBounds">
 			<bean class="org.geomajas.geometry.Bbox">
-				<property name="x" value="-1000000"/>
-				<property name="y" value="5000000"/>
-				<property name="width" value="4000000"/>
-				<property name="height" value="2000000"/>
+				<property name="x" value="-20026376.393709917"/>
+				<property name="y" value="-20026376.393709917"/>
+				<property name="width" value="40052752.787419834"/>
+				<property name="height" value="40052752.787419834"/>
 			</bean>
 		</property>
 		<property name="layers">
 			<list>
-				 <ref bean="clientLayerOsm" />
-                <!-- <ref bean="clientLayerSimplifiedCountriesTms" />     -->
-                <!--<ref bean="clientLayerSimplifiedCountriesWms" />-->
-                <!--<ref bean="clientLayerSimplifiedCountriesWfs" />-->
-                <!--<ref bean="clientLayerCountries" />-->
-                <ref bean="clientLayerCountriesWithFlag" />
-                <ref bean="clientLayerCities" />
+				<ref bean="clientLayerOsm" />
+				<ref bean="clientLayerSimplifiedCountriesTms" />
+				<ref bean="clientLayerSimplifiedCountriesWms" />
+				<ref bean="clientLayerSimplifiedCountriesWfs" />
+				<ref bean="clientLayerCountries" />
+				<ref bean="clientLayerCountriesWithFlag" />
+				<ref bean="clientLayerCities" />
+				<ref bean="clientLayerRailRoads" />
 			</list>
 		</property>
 	</bean>
