@@ -22,6 +22,15 @@ http://www.springframework.org/schema/tx http://www.springframework.org/schema/t
 
 	<context:component-scan base-package="org.geomajas"
 		name-generator="org.geomajas.spring.GeomajasBeanNameGenerator" />
+		
+	<bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+        <property name="properties">
+            <value>
+                geomajasCacheLocation=${java.io.tmpdir}/geomajas/enduser-application-gwt2-trunk
+            </value>
+        </property>
+        <property name="ignoreUnresolvablePlaceholders" value="true" />
+    </bean> 
 
 	<bean name="security.securityInfo" class="org.geomajas.security.SecurityInfo">
 		<property name="loopAllServices" value="false" />

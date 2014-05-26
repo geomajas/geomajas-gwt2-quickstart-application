@@ -10,12 +10,6 @@
  */
 package org.mypackage.client;
 
-import com.google.gwt.core.client.GWT;
-import com.google.gwt.uibinder.client.UiBinder;
-import com.google.gwt.uibinder.client.UiField;
-import com.google.gwt.user.client.ui.Composite;
-import com.google.gwt.user.client.ui.SimplePanel;
-import com.google.gwt.user.client.ui.Widget;
 import org.geomajas.gwt2.client.GeomajasImpl;
 import org.geomajas.gwt2.client.GeomajasServerExtension;
 import org.geomajas.gwt2.client.event.MapInitializationEvent;
@@ -23,7 +17,14 @@ import org.geomajas.gwt2.client.event.MapInitializationHandler;
 import org.geomajas.gwt2.client.map.MapPresenter;
 import org.geomajas.gwt2.client.widget.MapLayoutPanel;
 
-public class ApplicationLayout extends Composite {
+import com.google.gwt.core.client.GWT;
+import com.google.gwt.uibinder.client.UiBinder;
+import com.google.gwt.uibinder.client.UiField;
+import com.google.gwt.user.client.ui.ResizeComposite;
+import com.google.gwt.user.client.ui.SimpleLayoutPanel;
+import com.google.gwt.user.client.ui.Widget;
+
+public class ApplicationLayout extends ResizeComposite {
 
 	private final MapPresenter mapPresenter;
 
@@ -37,7 +38,7 @@ public class ApplicationLayout extends Composite {
 	private static final MyUiBinder UIBINDER = GWT.create(MyUiBinder.class);
 
 	@UiField
-	protected SimplePanel mapPanel;
+	protected SimpleLayoutPanel mapPanel;
 
 	public ApplicationLayout() {
 		initWidget(UIBINDER.createAndBindUi(this));
