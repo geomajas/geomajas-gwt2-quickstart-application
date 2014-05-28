@@ -1,4 +1,4 @@
-geomajas-application-gwt2
+geomajas-gwt2-quickstart-application
 =========================
 
 Example geomajas application
