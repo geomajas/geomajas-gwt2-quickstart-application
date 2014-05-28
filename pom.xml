@@ -13,12 +13,12 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 		 xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-	<groupId>org.mypackage</groupId>
-	<artifactId>myartifact</artifactId>
+	<groupId>org.geomajas</groupId>
+	<artifactId>geomajas-gwt2-quickstart-application</artifactId>
 	<version>1.0-SNAPSHOT</version>
 	<packaging>war</packaging>
-	<name>Geomajas GWT2 application</name>
-	<description>Geomajas GWT2 application</description>
+	<name>Geomajas GWT2 quickstart application</name>
+	<description>Geomajas GWT2 quickstart application</description>
 	<url>http://www.geomajas.org/</url>
 
 	<licenses>
