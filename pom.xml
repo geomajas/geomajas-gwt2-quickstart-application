@@ -20,6 +20,12 @@
 	<name>Geomajas GWT2 quickstart application</name>
 	<description>Geomajas GWT2 quickstart application</description>
 	<url>http://www.geomajas.org/</url>
+	
+	<scm>
+		<connection>scm:git:git@github.com:geomajas/geomajas-gwt2-quickstart-application.git</connection>
+		<developerConnection>scm:git:git@github.com:geomajas/geomajas-gwt2-quickstart-application.git</developerConnection>
+		<url>https://github.com/geomajas/geomajas-gwt2-quickstart-application.git</url>
+	</scm>
 
 	<licenses>
 		<license>
