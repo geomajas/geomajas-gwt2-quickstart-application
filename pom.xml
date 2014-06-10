@@ -214,7 +214,42 @@
 	</dependencies>
 
 	<build>
+        <resources>
+            <resource>
+                <directory>${basedir}/src/main/resources/</directory>
+                <filtering>true</filtering>
+                <includes>
+                    <include>**/cacheLocation.xml</include>
+                </includes>
+            </resource>
+            <resource>
+                <directory>${basedir}/src/main/resources/</directory>
+                <filtering>false</filtering>
+                <excludes>
+                    <exclude>**/cacheLocation.xml</exclude>
+                </excludes>
+            </resource>
+        </resources>
+
 		<plugins>
+            <!-- plugins needed to parse properties in cacheLocation.xml -->
+            <plugin>
+                <groupId>com.keyboardsamurais.maven</groupId>
+                <artifactId>maven-timestamp-plugin</artifactId>
+                <version>1.0</version>
+                <configuration>
+                    <propertyName>buildNumber</propertyName>
+                    <timestampPattern>yyyyMMddHHmm</timestampPattern>
+                </configuration>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>create</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>

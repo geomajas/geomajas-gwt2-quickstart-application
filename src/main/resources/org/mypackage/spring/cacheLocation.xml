@@ -1,0 +1,13 @@
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
+    <bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+        <property name="properties">
+            <value>
+               <!-- note that ${java.io.tmpdir} is escaped and ${project.artifactId}-${project.version}-${buildNumber} properties are parsed by maven-->
+                geomajasCacheLocation=\${java.io.tmpdir}/geomajas/${project.artifactId}-${project.version}-${buildNumber}
+            </value>
+        </property>
+        <property name="ignoreUnresolvablePlaceholders" value="true" />
+    </bean>
+
+</beans>

@@ -24,6 +24,9 @@
 			classpath:org/geomajas/spring/geomajasContext.xml
 			classpath:org/geomajas/plugin/rasterizing/DefaultCachedAndRasterizedPipelines.xml
 
+            <!-- infinispan cache location -->
+            classpath:org/mypackage/spring/cacheLocation.xml
+
 			<!-- application context -->
 			WEB-INF/applicationContext.xml
 			WEB-INF/tools.xml
