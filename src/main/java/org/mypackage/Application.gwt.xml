@@ -18,6 +18,12 @@
 	<!-- Geomajas Client -->
 	<inherits name="org.geomajas.gwt2.GeomajasClientImpl" />
 	<inherits name="org.geomajas.gwt2.GeomajasClientServerExtension" />
+    <inherits name="org.geomajas.gwt2.widget.CoreWidget"/>
 
-	<entry-point class="org.mypackage.client.Application"/>
+    <!-- Overwrite the core widget view factory with our own factory -->
+    <replace-with class="org.mypackage.client.CustomWidgetViewFactory">
+        <when-type-is class="org.geomajas.gwt2.widget.client.CoreWidgetViewFactory" />
+    </replace-with>
+
+    <entry-point class="org.mypackage.client.Application"/>
 </module>

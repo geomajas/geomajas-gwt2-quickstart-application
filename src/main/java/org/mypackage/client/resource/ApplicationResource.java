@@ -1,7 +1,3 @@
-package org.mypackage.client.resource;
-
-import com.google.gwt.resources.client.ClientBundle;
-
 /*
  * This is part of Geomajas, a GIS framework, http://www.geomajas.org/.
  *
@@ -12,7 +8,14 @@ import com.google.gwt.resources.client.ClientBundle;
  * by the Geomajas Contributors License Agreement. For full licensing
  * details, see LICENSE.txt in the project root.
  */
+
+package org.mypackage.client.resource;
+
+import com.google.gwt.resources.client.ClientBundle;
+
 public interface ApplicationResource extends ClientBundle {
 
+	@Source("org/mypackage/application.css")
+	ApplicationCssResource css();
 
 }
