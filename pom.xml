@@ -405,8 +405,8 @@
 					<deployer>
 						<deployables>
 							<deployable>
-								<groupId>org.mypackage</groupId>
-								<artifactId>myartifact</artifactId>
+								<groupId>org.geomajas</groupId>
+								<artifactId>geomajas-gwt2-quickstart-application</artifactId>
 								<type>war</type>
 								<properties>
 									<context>enduser-application-gwt2-trunk</context>
