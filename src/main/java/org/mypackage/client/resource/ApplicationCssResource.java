@@ -8,16 +8,16 @@
  * by the Geomajas Contributors License Agreement. For full licensing
  * details, see LICENSE.txt in the project root.
  */
-package org.mypackage.client;
 
-import com.google.gwt.core.client.EntryPoint;
-import com.google.gwt.user.client.ui.RootLayoutPanel;
+package org.mypackage.client.resource;
 
-public class Application implements EntryPoint {
+import com.google.gwt.resources.client.CssResource;
 
-	@Override
-	public void onModuleLoad() {
-		ApplicationLayout layout = new ApplicationLayout();
-		RootLayoutPanel.get().add(layout);
-	}
+/**
+ * Css resource for the application.
+ *
+ * @author Youri Flement
+ */
+public interface ApplicationCssResource extends CssResource {
+
 }

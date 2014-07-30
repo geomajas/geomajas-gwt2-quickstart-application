@@ -9,7 +9,7 @@
             <Abstract>Countries of the world</Abstract>
             <FeatureTypeStyle>
                 <Rule>
-                    <Name>Tiny</Name>
+                    <Name>Less than 500K</Name>
                     <Title>Less than 500K</Title>
                     <ogc:Filter>
                         <ogc:PropertyIsLessThan>
@@ -33,7 +33,7 @@
                     </PolygonSymbolizer>
                 </Rule>
                 <Rule>
-                    <Name>Small</Name>
+                    <Name>Between 500K and 5M</Name>
                     <Title>Between 500K and 5M</Title>
                     <ogc:Filter>
                         <ogc:And>
@@ -63,7 +63,7 @@
                     </PolygonSymbolizer>
                 </Rule>
                 <Rule>
-                    <Name>Medium</Name>
+                    <Name>Between 5M and 50M</Name>
                     <Title>Between 5M and 50M</Title>
                     <ogc:Filter>
                         <ogc:And>
@@ -93,7 +93,7 @@
                     </PolygonSymbolizer>
                 </Rule>
         <Rule>
-            <Name>Large</Name>
+            <Name>Between 50M and 500M</Name>
             <Title>Between 50M and 500M</Title>
             <ogc:Filter>
                 <ogc:And>
@@ -123,7 +123,7 @@
             </PolygonSymbolizer>
         </Rule>
                 <Rule>
-                    <Name>Huge</Name>
+                    <Name>More than 500M</Name>
                     <Title>More than 500M</Title>
                     <ogc:Filter>
                         <ogc:PropertyIsGreaterThanOrEqualTo>
@@ -147,7 +147,7 @@
                     </PolygonSymbolizer>
                 </Rule>
                 <Rule>
-					<Name>Label</Name>
+					<Name></Name>
 					<Title>Label for all countries</Title>
 					<TextSymbolizer>
 							  <Label>
