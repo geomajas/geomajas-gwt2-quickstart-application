@@ -45,8 +45,8 @@
             WEB-INF/layer/WMS/layerSimplifiedCountriesWms.xml
 
 			<!-- WFS layer -->
-            <!--WEB-INF/layer/WFS/layerSimplifiedCountriesWFS.xml-->
-            <!--WEB-INF/layer/WFS/clientLayerSimplifiedCountriesWfs.xml-->
+            WEB-INF/layer/WFS/layerSimplifiedCountriesWFS.xml
+            WEB-INF/layer/WFS/clientLayerSimplifiedCountriesWfs.xml
 
 			<!-- layers based on a SHP file -->
 			WEB-INF/layer/SHP/layerCountries.xml
@@ -90,7 +90,7 @@
 		<init-param>
 			<description>Spring Web-MVC specific (additional) context files.</description>
 			<param-name>contextConfigLocation</param-name>
-			<param-value>classpath*:META-INF/geomajasWebContext.xml</param-value>
+			<param-value>classpath*:org/geomajas/spring/geomajasWebContext.xml</param-value>
 		</init-param>
 		<load-on-startup>3</load-on-startup>
 	</servlet>

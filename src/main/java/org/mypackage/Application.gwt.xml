@@ -20,4 +20,9 @@
 	<inherits name="org.geomajas.gwt2.GeomajasClientServerExtension" />
 
 	<entry-point class="org.mypackage.client.Application"/>
+
+	<!-- Superdev -->
+	<add-linker name="xsiframe" />
+	<set-configuration-property name="devModeRedirectEnabled" value="true" />
+	<set-property name="compiler.useSourceMaps" value="true"/>
 </module>

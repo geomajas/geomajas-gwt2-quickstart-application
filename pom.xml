@@ -186,11 +186,13 @@
 		<dependency>
 			<groupId>com.google.gwt</groupId>
 			<artifactId>gwt-user</artifactId>
+			<version>${gwt-version}</version>
 			<scope>provided</scope>
 		</dependency>
 		<dependency>
 			<groupId>com.google.gwt</groupId>
 			<artifactId>gwt-servlet</artifactId>
+			<version>${gwt-version}</version>
 			<scope>runtime</scope>
 		</dependency>
 
@@ -525,9 +527,9 @@
 
 	<properties>
 		<geotools-version>9.5</geotools-version>
-		<gwt-version>2.5.0</gwt-version>
+		<gwt-version>2.6.1</gwt-version>
 		<geomajas-build-tools-version>2.0.0</geomajas-build-tools-version>
-		<geomajas-client-gwt2-version>2.0.0</geomajas-client-gwt2-version>
+		<geomajas-client-gwt2-version>2.1.0-SNAPSHOT</geomajas-client-gwt2-version>
 		<gwt.compiler.skip>false</gwt.compiler.skip>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 	</properties>
