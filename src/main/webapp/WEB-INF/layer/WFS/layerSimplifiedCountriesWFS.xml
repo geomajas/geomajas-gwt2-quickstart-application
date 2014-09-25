@@ -26,7 +26,7 @@ http://www.springframework.org/schema/context/spring-context-2.5.xsd"
                 <bean class="org.geomajas.configuration.Parameter">
                     <property name="name" value="WFSDataStoreFactory:GET_CAPABILITIES_URL" />
                     <property name="value"
-							  value="http://apps.geomajas.org/geoserver/demo_world/wfs?service=WFS&amp;VERSION&#61;1.1.0&amp;request&#61;GetCapabilities" />
+							  value="http://apps.geomajas.org/geoserver/demo_world/wfs?service=WFS&amp;VERSION=1.1.0&amp;request=GetCapabilities" />
                 </bean>
                 <bean class="org.geomajas.configuration.Parameter">
                     <property name="name" value="WFSDataStoreFactory:TIMEOUT" />

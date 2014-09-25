@@ -18,6 +18,7 @@
 	<!-- Geomajas Client -->
 	<inherits name="org.geomajas.gwt2.GeomajasClientImpl" />
 	<inherits name="org.geomajas.gwt2.GeomajasClientServerExtension" />
+    <inherits name='org.geomajas.gwt2.plugin.tilebasedlayer.GeomajasTileBasedLayerPlugin' />
 
 	<entry-point class="org.mypackage.client.Application"/>
 
