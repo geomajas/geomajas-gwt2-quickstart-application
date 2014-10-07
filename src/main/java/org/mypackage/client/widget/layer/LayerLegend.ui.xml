@@ -5,27 +5,6 @@
 
 	<ui:with field='resource' type='org.mypackage.client.resource.ApplicationResource' />
 
-
-	<g:PopupPanel ui:field="layerLegendPanel" styleName="{resource.css.layerPopupPanel}">
-
-		<g:HTMLPanel>
-
-			<g:HTMLPanel styleName="{resource.css.popupPanelHeader}">
-
-				<g:Label text="Layers" />
-
-				<g:Button ui:field="layerLegendPanelCloseButton" styleName="{resource.css.closePopupPanelButton}" />
-
-			</g:HTMLPanel>
-
-			<g:HTMLPanel ui:field="layerLegendPanelContent" styleName="{resource.css.layerPopupPanelContent}">
-
-				<li:LayerLegendItem ui:field="layerLegendItem" />
-
-			</g:HTMLPanel>
-
-		</g:HTMLPanel>
-
-	</g:PopupPanel>
+	<g:PopupPanel ui:field="layerLegendPanel" styleName="{resource.css.layerPopupPanel}" />
 
 </ui:UiBinder>
