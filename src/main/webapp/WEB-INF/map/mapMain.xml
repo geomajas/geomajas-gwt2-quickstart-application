@@ -79,6 +79,7 @@ http://www.springframework.org/schema/util http://www.springframework.org/schema
 		</property>
 		<property name="layers">
 			<list>
+				<ref bean="clientLayerOsm" />
  				<ref bean="clientLayerSimplifiedCountriesWms" />
  				<ref bean="clientLayerSimplifiedCountriesWfs" />
 				<ref bean="clientLayerCountries" />

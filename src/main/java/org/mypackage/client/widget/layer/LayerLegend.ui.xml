@@ -1,0 +1,31 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+             xmlns:g="urn:import:com.google.gwt.user.client.ui"
+             xmlns:li="urn:import:org.mypackage.client.widget.layer">
+
+	<ui:with field='resource' type='org.mypackage.client.resource.ApplicationResource' />
+
+
+	<g:PopupPanel ui:field="layerLegendPanel" styleName="{resource.css.layerPopupPanel}">
+
+		<g:HTMLPanel>
+
+			<g:HTMLPanel styleName="{resource.css.popupPanelHeader}">
+
+				<g:Label text="Layers" />
+
+				<g:Button ui:field="layerLegendPanelCloseButton" styleName="{resource.css.closePopupPanelButton}" />
+
+			</g:HTMLPanel>
+
+			<g:HTMLPanel ui:field="layerLegendPanelContent" styleName="{resource.css.layerPopupPanelContent}">
+
+				<li:LayerLegendItem ui:field="layerLegendItem" />
+
+			</g:HTMLPanel>
+
+		</g:HTMLPanel>
+
+	</g:PopupPanel>
+
+</ui:UiBinder>

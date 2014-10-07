@@ -1,0 +1,189 @@
+@sprite .infoButton {
+	top: 5px;
+	left: 92px;
+	gwt-image: "infoIcon";
+	border: none;
+	background-color: #f6f6f6;
+	background-position: center center;
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	border-radius: 3px;
+	padding: 11px;
+	background-size: 16px 16px;
+	width: 22px;
+	height: 22px;
+	box-shadow: 0 1px 6px rgba(40, 42, 44, 0.8);
+	-moz-box-shadow: 0 1px 6px rgba(40, 42, 44, 0.8);
+	-webkit-box-shadow: 0 1px 6px rgba(40, 42, 44, 0.8);
+}
+
+.infoButton:hover {
+	background-color: lightgreen;
+	cursor: pointer;
+}
+
+.infoButton:active {
+	background-color: #f6f6f6;
+	cursor: pointer;
+}
+
+@sprite .infoButtonActive {
+	top: 5px;
+	left: 92px;
+	gwt-image: "infoIcon";
+	border: none;
+	background-color: lightgreen;
+	background-position: center center;
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	border-radius: 3px;
+	padding: 11px;
+	background-size: 16px 16px;
+	width: 22px;
+	height: 22px;
+	box-shadow: 0 1px 6px rgba(40, 42, 44, 0.8);
+	-moz-box-shadow: 0 1px 6px rgba(40, 42, 44, 0.8);
+	-webkit-box-shadow: 0 1px 6px rgba(40, 42, 44, 0.8);
+}
+
+.infoButtonActive:hover {
+	background-color: #f6f6f6;
+	cursor: pointer;
+}
+
+.infoButtonActive:active {
+	background-color: lightgreen;
+	cursor: pointer;
+}
+
+@sprite .layerButton {
+	top: 5px;
+	right: 5px;
+	gwt-image: "layerIcon";
+	border: none;
+	background-color: #f6f6f6;
+	background-position: center center;
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	border-radius: 3px;
+	padding: 11px;
+	background-size: 16px 16px;
+	width: 22px;
+	height: 22px;
+	box-shadow: 0 1px 6px rgba(40, 42, 44, 0.8);
+	-moz-box-shadow: 0 1px 6px rgba(40, 42, 44, 0.8);
+	-webkit-box-shadow: 0 1px 6px rgba(40, 42, 44, 0.8);
+}
+
+.layerButton:hover {
+	background-color: #fff;
+	cursor: pointer;
+}
+
+.infoPopupPanel {
+	margin: 0;
+	padding: 0 0 5px 0;
+	border: 1px solid black;
+	background-color: #f6f6f6;
+	box-shadow: 0 1px 6px rgba(40, 42, 44, 0.8);
+	-moz-box-shadow: 0 1px 6px rgba(40, 42, 44, 0.8);
+	-webkit-box-shadow: 0 1px 6px rgba(40, 42, 44, 0.8);
+}
+
+.infoPopupPanelContent {
+	padding-left: 5px;
+}
+
+.infoPopupPanelSubTitle {
+	font-weight: bold;
+	padding-top: 4px;
+	padding-bottom: 4px;
+}
+
+.layerPopupPanel {
+	margin: 0;
+	padding: 0 0 5px 0;
+	border: 1px solid black;
+	background-color: #f6f6f6;
+	box-shadow: 0 1px 6px rgba(40, 42, 44, 0.8);
+	-moz-box-shadow: 0 1px 6px rgba(40, 42, 44, 0.8);
+	-webkit-box-shadow: 0 1px 6px rgba(40, 42, 44, 0.8);
+}
+
+.layerPopupPanelContent {
+	padding-left: 5px;
+}
+
+.popupPanelHeader {
+	height: 25px;
+	border-bottom: 1px solid black;
+	margin-bottom: 4px;
+}
+
+.popupPanelHeader div {
+	display: inline-block;
+	font-size: 16px;
+	padding-top: 4px;
+	padding-left: 4px;
+}
+
+@sprite .closePopupPanelButton {
+	float: right;
+	gwt-image: "closeIcon";
+	background-position: center center;
+	background-size: 16px 16px;
+	width: 22px;
+	height: 22px;
+	border: none;
+	margin-top: 2px;
+	margin-right: 3px;
+}
+
+.detailPopupPanel {
+	margin: 0;
+	padding: 5px;
+	border: 1px solid black;
+	background-color: #f6f6f6;
+	box-shadow: 0 1px 6px rgba(40, 42, 44, 0.8);
+	-moz-box-shadow: 0 1px 6px rgba(40, 42, 44, 0.8);
+	-webkit-box-shadow: 0 1px 6px rgba(40, 42, 44, 0.8);
+}
+
+.featureItem {
+	padding: 3px;
+	cursor: pointer;
+}
+
+.featureItem:hover {
+	border-top: 1px solid black;
+	border-bottom: 1px solid black;
+	padding-top: 2px;
+	padding-bottom: 2px;
+}
+
+.featureItemDetail span {
+	font-weight: bold;
+}
+
+/*
+
+
+*/
+
+@external .toolTip;
+.toolTip {
+	border: 1px solid #000000;
+	background-color: whitesmoke;
+	padding: 6px 6px 3px 6px;
+}
+
+@external .toolTipLine;
+.toolTipLine {
+	margin-bottom: 3px;
+}
+
+.countryImage {
+	width: 35%;
+	height: 35%;
+	padding-top: 10px;
+}

@@ -22,7 +22,7 @@ http://www.springframework.org/schema/context/spring-context-2.5.xsd"
 
     <bean name="layerSimplifiedCountriesWms" class="org.geomajas.layer.wms.WmsLayer">
         <property name="layerInfo" ref="layerWmsInfo" />
-        <property name="baseWmsUrl" value="http://apps.geomajas.org/geoserver/demo_world/wms"/>
+        <property name="baseWmsUrl" value="http://apps.geomajas.org/geoserver/geomajas/wms"/>
         <property name="version" value="1.1.1"/>
         <property name="format" value="image/jpeg"/>
         <property name="styles" value=""/>
@@ -48,7 +48,7 @@ http://www.springframework.org/schema/context/spring-context-2.5.xsd"
 				<property name="height" value="40075016.6855784"/>
 			</bean>
 		</property>
-        <property name="dataSourceName" value="demo_world:simplified_country_borders" />
+        <property name="dataSourceName" value="geomajas:simplified_country_borders" />
         <property name="tileWidth" value="512"/>
         <property name="tileHeight" value="512"/>
     </bean>
