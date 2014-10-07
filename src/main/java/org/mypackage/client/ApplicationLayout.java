@@ -10,13 +10,6 @@
  */
 package org.mypackage.client;
 
-import org.geomajas.gwt2.client.GeomajasImpl;
-import org.geomajas.gwt2.client.GeomajasServerExtension;
-import org.geomajas.gwt2.client.event.MapInitializationEvent;
-import org.geomajas.gwt2.client.event.MapInitializationHandler;
-import org.geomajas.gwt2.client.map.MapPresenter;
-import org.geomajas.gwt2.client.widget.MapLayoutPanel;
-
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
@@ -24,9 +17,33 @@ import com.google.gwt.user.client.ui.ResizeComposite;
 import com.google.gwt.user.client.ui.SimpleLayoutPanel;
 import com.google.gwt.user.client.ui.Widget;
 
+import org.geomajas.geometry.Coordinate;
+import org.geomajas.gwt2.client.GeomajasImpl;
+import org.geomajas.gwt2.client.GeomajasServerExtension;
+import org.geomajas.gwt2.client.event.MapInitializationEvent;
+import org.geomajas.gwt2.client.event.MapInitializationHandler;
+import org.geomajas.gwt2.client.map.MapPresenter;
+import org.geomajas.gwt2.client.map.layer.tile.TileConfiguration;
+import org.geomajas.gwt2.client.widget.MapLayoutPanel;
+import org.geomajas.gwt2.plugin.tilebasedlayer.client.TileBasedLayerClient;
+import org.geomajas.gwt2.plugin.tilebasedlayer.client.layer.OsmLayer;
+
+import java.util.ArrayList;
+import java.util.List;
+
 public class ApplicationLayout extends ResizeComposite {
 
+	private static final int TILE_DIMENSION = 256;
+
+	private static final int MAX_ZOOM_LEVELS = 19;
+
+	private static final double EQUATOR_IN_METERS = 40075016.686;
+
+	private static final double HALF_EQUATOR_IN_METERS = 40075016.686 / 2;
+
 	private final MapPresenter mapPresenter;
+
+	private List<Double> resolutions;
 
 	/**
 	 * UI binder interface for this layout.
@@ -60,8 +77,45 @@ public class ApplicationLayout extends ResizeComposite {
 
 		@Override
 		public void onMapInitialized(MapInitializationEvent mapInitializationEvent) {
-
+			initializeLayer();
 		}
 	}
+	
+	/**
+	 * Initialize the OSM layer by creating a new {@link org.geomajas.gwt2.client.map.layer.tile.TileBasedLayer}
+	 * and a {@link org.geomajas.gwt2.client.map.layer.tile.TileConfiguration}.
+	 * <p/>
+	 * Values such as {@code {z}, {x}, {y}} are optional and will be used to substitute the tile level, X-ordinate and
+	 * Y-ordinate.
+	 * <p/>
+	 * The tile based layer service can be given different URLs in which case Round-robin will be performed to
+	 * determine the next URL to load tiles from.
+	 */
+	private void initializeLayer() {
+		// Set the URL to the service and the file extension:
+		String[] domains = new String[] { "a", "b", "c" };
+		List<String> urls = new ArrayList<String>();
+		for (String domain : domains) {
+			urls.add("http://" + domain + ".tile.openstreetmap.org/{z}/{x}/{y}.png");
+		}
+
+		// Create the configuration for the tiles:
+		Coordinate tileOrigin = new Coordinate(-HALF_EQUATOR_IN_METERS, -HALF_EQUATOR_IN_METERS);
+		initializeResolutions();
+		TileConfiguration tileConfig = new TileConfiguration(TILE_DIMENSION, TILE_DIMENSION, tileOrigin, resolutions);
+
+		// Create a new layer with the configurations and add it to the maps:
+		OsmLayer osmLayer = TileBasedLayerClient.getInstance().createOsmLayer("osmCountries", tileConfig, urls);
+		mapPresenter.getLayersModel().addLayer(osmLayer);
+		mapPresenter.getLayersModel().moveLayer(osmLayer, 0);
+	}
+
+	private void initializeResolutions() {
+		resolutions = new ArrayList<Double>();
+		for (int i = 0; i < MAX_ZOOM_LEVELS; i++) {
+			resolutions.add(EQUATOR_IN_METERS / (TILE_DIMENSION * Math.pow(2, i)));
+		}
+	}
+
 
 }
