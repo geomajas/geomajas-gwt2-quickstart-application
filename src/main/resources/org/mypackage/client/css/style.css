@@ -1,3 +1,13 @@
+/*
+# This is part of Geomajas, a GIS framework, http://www.geomajas.org/.
+#
+# Copyright 2008-2014 Geosparc nv, http://www.geosparc.com/, Belgium.
+#
+# The program is available in open source according to the GNU Affero
+# General Public License. All contributions in this program are covered
+# by the Geomajas Contributors License Agreement. For full licensing
+# details, see LICENSE.txt in the project root.
+*/
 @sprite .infoButton {
 	top: 5px;
 	left: 92px;
@@ -81,6 +91,7 @@
 }
 
 .infoPopupPanel {
+	width: 200px;
 	margin: 0;
 	padding: 0 0 5px 0;
 	border: 1px solid black;
@@ -88,6 +99,10 @@
 	box-shadow: 0 1px 6px rgba(40, 42, 44, 0.8);
 	-moz-box-shadow: 0 1px 6px rgba(40, 42, 44, 0.8);
 	-webkit-box-shadow: 0 1px 6px rgba(40, 42, 44, 0.8);
+}
+
+.infoPopupPanelScroll {
+	max-height: 300px;
 }
 
 .infoPopupPanelContent {
@@ -164,11 +179,6 @@
 .featureItemDetail span {
 	font-weight: bold;
 }
-
-/*
-
-
-*/
 
 @external .toolTip;
 .toolTip {

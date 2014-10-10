@@ -38,7 +38,6 @@ import java.util.Map;
  * @author Oliver May
  * @author Jan De Moerloose
  * @author David Debuck
- * @since 2.1.0
  *
  */
 public class FeatureClickedListener extends AbstractMapController {

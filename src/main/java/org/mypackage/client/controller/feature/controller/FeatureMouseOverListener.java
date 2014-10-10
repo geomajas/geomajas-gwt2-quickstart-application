@@ -32,10 +32,10 @@ import java.util.Map;
 import java.util.logging.Logger;
 
 /**
- * Controller that provides a feature based on a location clicked on the map.
+ * Controller that provides a list of features for the position
+ * where the mouse pointer currently resides on the map.
  *
  * @author David Debuck
- * @since 2.1.0
  *
  */
 public class FeatureMouseOverListener extends AbstractMapController {
@@ -113,6 +113,8 @@ public class FeatureMouseOverListener extends AbstractMapController {
 
 						if (ApplicationService.getInstance().isTooltipShowingAllowed()) {
 
+							ApplicationService.getInstance().getMapPresenter().setCursor("progress");
+
 							Geometry point = new Geometry(Geometry.POINT, 0, -1);
 							point.setCoordinates(new Coordinate[] { worldCoordinate });
 
@@ -121,12 +123,13 @@ public class FeatureMouseOverListener extends AbstractMapController {
 									.getServerFeatureService()
 									.search(mapPresenter, point, calculateBufferFromPixelTolerance(),
 											ServerFeatureService.QueryType.INTERSECTS,
-											ServerFeatureService.SearchLayerType.SEARCH_ALL_LAYERS, - 1,
+											ServerFeatureService.SearchLayerType.SEARCH_ALL_LAYERS, -1,
 											new SelectionCallback()
 									);
 
 						} else {
 							timer.cancel();
+							ApplicationService.getInstance().getMapPresenter().setCursor("default");
 						}
 
 					}
@@ -134,6 +137,7 @@ public class FeatureMouseOverListener extends AbstractMapController {
 				timer.schedule(delay);
 
 			} else {
+				ApplicationService.getInstance().getMapPresenter().setCursor("default");
 				timer.cancel();
 				timer.schedule(delay);
 			}
@@ -159,10 +163,15 @@ public class FeatureMouseOverListener extends AbstractMapController {
 
 				if (layer.isMarkedAsVisible()) {
 					if (features != null) {
-						for (Feature f : features) {
 
-							clickedFeatures.put(f.getLabel(), f);
+						// Don't bother adding when features for this layer are greater than 10
+						if (features.size() > 10) {
+							clickedFeatures.put(layer.getTitle(), null);
+						} else {
+							for (Feature f : features) {
 
+								clickedFeatures.put(f.getLabel(), f);
+							}
 						}
 
 					}
@@ -173,6 +182,7 @@ public class FeatureMouseOverListener extends AbstractMapController {
 			mapPresenter.getEventBus().fireEvent(
 					new FeatureMouseOverEvent(hoverPosition, new ArrayList<Feature>(clickedFeatures.values())));
 
+			ApplicationService.getInstance().getMapPresenter().setCursor("default");
 		}
 
 	}

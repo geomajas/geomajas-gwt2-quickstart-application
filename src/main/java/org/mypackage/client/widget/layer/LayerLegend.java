@@ -18,8 +18,12 @@ import com.google.gwt.event.dom.client.MouseOutEvent;
 import com.google.gwt.event.dom.client.MouseOutHandler;
 import com.google.gwt.event.dom.client.MouseOverEvent;
 import com.google.gwt.event.dom.client.MouseOverHandler;
+import com.google.gwt.event.logical.shared.ResizeEvent;
+import com.google.gwt.event.logical.shared.ResizeHandler;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
+import com.google.gwt.user.client.Timer;
+import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.CheckBox;
 import com.google.gwt.user.client.ui.HTMLPanel;
@@ -41,11 +45,12 @@ import org.geomajas.gwt2.client.map.layer.VectorServerLayerImpl;
 import org.geomajas.sld.FeatureTypeStyleInfo;
 import org.geomajas.sld.RuleInfo;
 import org.mypackage.client.ApplicationService;
+import org.mypackage.client.i18n.ApplicationMessages;
 import org.mypackage.client.resource.ApplicationResource;
 import org.mypackage.client.util.UrlBuilder;
 
 /**
- * Layer Legend.
+ * The layer legend panel widget.
  *
  * @author David Debuck
  *
@@ -58,6 +63,8 @@ public class LayerLegend implements IsWidget {
 	private MapPresenter mapPresenter;
 
 	private Button closeLayerPopupPanelButton = new Button();
+
+	private ApplicationMessages msg = GWT.create(ApplicationMessages.class);
 
 	private static final LayerLegendUiBinder UIBINDER = GWT.create(LayerLegendUiBinder.class);
 
@@ -93,7 +100,33 @@ public class LayerLegend implements IsWidget {
 			}
 		}, MouseOutEvent.getType());
 
+		Window.addResizeHandler(new BrowserResizedHandler());
+
 		initLayerLegend();
+	}
+
+	/**
+	 * Handler that listens when the browser gets resized.
+	 * This will calculate and rescale the search filter accordingly, we are using a timer here as this will unload the
+	 * browser somewhat when handling the events.
+	 *
+	 * @author David Debuck
+	 */
+	class BrowserResizedHandler implements ResizeHandler {
+
+		private Timer resizeTimer = new Timer() {
+			@Override
+			public void run() {
+				ApplicationService.getInstance().getLayerLegend().hide();
+			}
+		};
+
+		@Override
+		public void onResize(ResizeEvent event) {
+			resizeTimer.cancel();
+			resizeTimer.schedule(100);
+		}
+
 	}
 
 	/**
@@ -238,7 +271,7 @@ public class LayerLegend implements IsWidget {
 	}
 
 	/**
-	 *
+	 * Init the layer legend panel.
 	 */
 	private void initLayerLegend() {
 
@@ -255,7 +288,7 @@ public class LayerLegend implements IsWidget {
 
 			HTMLPanel closeLayerButtonContainer = new HTMLPanel("");
 			closeLayerButtonContainer.addStyleName(ApplicationResource.INSTANCE.css().popupPanelHeader());
-			Label layerTitle = new Label("Layers");
+			Label layerTitle = new Label(msg.layerLegendPanelTitle());
 			closeLayerButtonContainer.add(layerTitle);
 			closeLayerButtonContainer.add(closeLayerPopupPanelButton);
 			layerPopupPanelWrapper.add(closeLayerButtonContainer);

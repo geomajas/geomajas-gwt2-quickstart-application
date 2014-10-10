@@ -31,11 +31,15 @@ import org.geomajas.gwt2.plugin.tilebasedlayer.client.TileBasedLayerClient;
 import org.geomajas.gwt2.plugin.tilebasedlayer.client.layer.OsmLayer;
 import org.mypackage.client.controller.feature.controller.FeatureMouseOverEvent;
 import org.mypackage.client.controller.feature.controller.FeatureMouseOverHandler;
+import org.mypackage.client.i18n.ApplicationMessages;
 import org.mypackage.client.resource.ApplicationResource;
 
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * General Application layout for this application.
+ */
 public class ApplicationLayout extends ResizeComposite {
 
 	private static final int TILE_DIMENSION = 256;
@@ -61,6 +65,8 @@ public class ApplicationLayout extends ResizeComposite {
 
 	}
 
+	private ApplicationMessages msg = GWT.create(ApplicationMessages.class);
+
 	private static final MyUiBinder UIBINDER = GWT.create(MyUiBinder.class);
 
 	@UiField
@@ -82,7 +88,6 @@ public class ApplicationLayout extends ResizeComposite {
 		mapLayoutPanel.setPresenter(mapPresenter);
 		mapPanel.add(mapLayoutPanel);
 
-		// Get an instance of our ApplicationService and add something . TODO
 		appService = ApplicationService.getInstance();
 		appService.setMapPresenter(mapPresenter);
 		appService.setMapLayoutPanel(mapLayoutPanel);
@@ -145,6 +150,9 @@ public class ApplicationLayout extends ResizeComposite {
 		mapPresenter.getLayersModel().moveLayer(osmLayer, 0);
 	}
 
+	/**
+	 * Generate a list of resolutions for the available zoom levels.
+	 */
 	private void initializeResolutions() {
 		resolutions = new ArrayList<Double>();
 		for (int i = 0; i < MAX_ZOOM_LEVELS; i++) {
@@ -185,7 +193,12 @@ public class ApplicationLayout extends ResizeComposite {
 				List<Label> content = new ArrayList<Label>();
 
 				for (Feature feature : features) {
-					final Label label = new Label(feature.getLabel());
+					final Label label;
+					if (feature == null) {
+						label = new Label(msg.tooManyFeaturesToShow());
+					} else {
+						label = new Label(feature.getLabel());
+					}
 					label.addStyleName(ApplicationResource.INSTANCE.css().toolTipLine());
 					content.add(label);
 				}
@@ -194,7 +207,7 @@ public class ApplicationLayout extends ResizeComposite {
 				int left = RootPanel.get().getAbsoluteLeft() + mapLayoutPanel.getAbsoluteLeft();
 				int top = RootPanel.get().getAbsoluteTop() + mapLayoutPanel.getAbsoluteTop();
 
-				// Add some extra pixels to the tooltip so we can still drag the map.
+				// Add some extra pixels to the position of the tooltip so we still can drag the map.
 				ApplicationService.getInstance().getToolTip().addContentAndShow(
 						content,
 						left + (int) event.getCoordinate().getX() + 5,

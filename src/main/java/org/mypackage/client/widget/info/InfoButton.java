@@ -27,10 +27,11 @@ import com.google.gwt.user.client.ui.IsWidget;
 import com.google.gwt.user.client.ui.Widget;
 import org.geomajas.gwt2.client.widget.AbstractMapWidget;
 import org.mypackage.client.ApplicationService;
+import org.mypackage.client.i18n.ApplicationMessages;
 import org.mypackage.client.resource.ApplicationResource;
 
 /**
- * InfoButton.
+ * InfoButton widget.
  *
  * @author David Debuck
  *
@@ -39,6 +40,8 @@ public class InfoButton extends AbstractMapWidget implements IsWidget {
 
 	@UiField
 	protected Button infoButton;
+
+	private ApplicationMessages msg = GWT.create(ApplicationMessages.class);
 
 	private static final InfoButtonUiBinder UIBINDER = GWT.create(InfoButtonUiBinder.class);
 
@@ -70,7 +73,7 @@ public class InfoButton extends AbstractMapWidget implements IsWidget {
 		addDomHandler(preventWeirdBehaviourHandler, ClickEvent.getType());
 		addDomHandler(preventWeirdBehaviourHandler, DoubleClickEvent.getType());
 
-		infoButton.setTitle("Activate the feature clicked listener.");
+		infoButton.setTitle(msg.activateFeatureClickedListener());
 
 		infoButton.addClickHandler(new ClickHandler() {
 			@Override
@@ -79,10 +82,10 @@ public class InfoButton extends AbstractMapWidget implements IsWidget {
 				boolean active = ApplicationService.getInstance().toggleFeatureClickedListener(false);
 				if (active) {
 					infoButton.setStyleName(ApplicationResource.INSTANCE.css().infoButtonActive());
-					infoButton.setTitle("Deactivate the feature clicked listener.");
+					infoButton.setTitle(msg.deActivateFeatureClickedListener());
 				} else {
 					infoButton.setStyleName(ApplicationResource.INSTANCE.css().infoButton());
-					infoButton.setTitle("Activate the feature clicked listener.");
+					infoButton.setTitle(msg.activateFeatureClickedListener());
 				}
 
 			}

@@ -21,7 +21,6 @@ import java.util.List;
  * Contains the (screen) coordinate where was hovered and the list of features.
  *
  * @author David Debuck
- * @since 2.1.0
  */
 public class FeatureMouseOverEvent extends Event<FeatureMouseOverHandler> {
 

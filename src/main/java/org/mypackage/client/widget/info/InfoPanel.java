@@ -25,6 +25,7 @@ import com.google.gwt.user.client.ui.Image;
 import com.google.gwt.user.client.ui.IsWidget;
 import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.PopupPanel;
+import com.google.gwt.user.client.ui.ScrollPanel;
 import com.google.gwt.user.client.ui.Widget;
 import org.geomajas.gwt2.client.map.attribute.Attribute;
 import org.geomajas.gwt2.client.map.feature.Feature;
@@ -32,13 +33,14 @@ import org.geomajas.layer.feature.attribute.ImageUrlAttribute;
 import org.mypackage.client.ApplicationService;
 import org.mypackage.client.controller.feature.controller.FeatureClickedEvent;
 import org.mypackage.client.controller.feature.controller.FeatureClickedHandler;
+import org.mypackage.client.i18n.ApplicationMessages;
 import org.mypackage.client.resource.ApplicationResource;
 
 import java.util.List;
 import java.util.Map;
 
 /**
- * InfoPanel.
+ * The info panel widget.
  *
  * @author David Debuck
  *
@@ -57,6 +59,8 @@ public class InfoPanel implements IsWidget {
 	private HTMLPanel infoPopupPanelContent = new HTMLPanel("");
 
 	private final Button closeInfoPopupPanelButton = new Button("");
+
+	private ApplicationMessages msg = GWT.create(ApplicationMessages.class);
 
 	private static final InfoPanelUiBinder UIBINDER = GWT.create(InfoPanelUiBinder.class);
 
@@ -131,7 +135,7 @@ public class InfoPanel implements IsWidget {
 
 	/**
 	 *
-	 * @param left
+	 * @param left int
 	 */
 	public void setLeft(int left) {
 		this.left = left;
@@ -139,7 +143,7 @@ public class InfoPanel implements IsWidget {
 
 	/**
 	 *
-	 * @param top
+	 * @param top int
 	 */
 	public void setTop(int top) {
 		this.top = top;
@@ -151,7 +155,9 @@ public class InfoPanel implements IsWidget {
 	}
 
 	/**
+	 * Handler that handles FeatureClickedEvent.
 	 *
+	 * @author David Debuck
 	 */
 	private class MyFeatureClickedHandler implements FeatureClickedHandler {
 
@@ -171,7 +177,7 @@ public class InfoPanel implements IsWidget {
 				for (final Feature feature : features) {
 
 					if (!feature.getLayer().getId().equalsIgnoreCase(previousLayerId)) {
-						Label subTitle = new Label("# Layer: " + feature.getLayer().getTitle());
+						Label subTitle = new Label(msg.infoPanelSubTitle() + " "  + feature.getLayer().getTitle());
 						subTitle.addStyleName(ApplicationResource.INSTANCE.css().infoPopupPanelSubTitle());
 
 						infoPopupPanelContent.add(subTitle);
@@ -240,11 +246,10 @@ public class InfoPanel implements IsWidget {
 	}
 
 	/**
-	 *
+	 * Init the info panel.
 	 */
 	private void initInfoPanel() {
 
-		infoPopupPanel.setWidth("200px");
 		infoPopupPanel.addStyleName(ApplicationResource.INSTANCE.css().infoPopupPanel());
 
 		HTMLPanel infoPopupPanelWrapper = new HTMLPanel("");
@@ -260,14 +265,19 @@ public class InfoPanel implements IsWidget {
 
 		HTMLPanel closeInfoButtonContainer = new HTMLPanel("");
 		closeInfoButtonContainer.addStyleName(ApplicationResource.INSTANCE.css().popupPanelHeader());
-		Label infoTitle = new Label("Info");
+		Label infoTitle = new Label(msg.infoPanelTitle());
 		closeInfoButtonContainer.add(infoTitle);
 		closeInfoButtonContainer.add(closeInfoPopupPanelButton);
 		infoPopupPanelWrapper.add(closeInfoButtonContainer);
 
 		infoPopupPanelContent = new HTMLPanel("");
 		infoPopupPanelContent.addStyleName(ApplicationResource.INSTANCE.css().infoPopupPanelContent());
-		infoPopupPanelWrapper.add(infoPopupPanelContent);
+
+		ScrollPanel infoPopupPanelScroll = new ScrollPanel();
+		infoPopupPanelScroll.addStyleName(ApplicationResource.INSTANCE.css().infoPopupPanelScroll());
+		infoPopupPanelScroll.add(infoPopupPanelContent);
+
+		infoPopupPanelWrapper.add(infoPopupPanelScroll);
 
 		infoPopupPanel.add(infoPopupPanelWrapper);
 

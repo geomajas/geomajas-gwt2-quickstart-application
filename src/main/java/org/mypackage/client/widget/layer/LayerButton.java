@@ -26,7 +26,7 @@ import org.mypackage.client.ApplicationService;
 import org.mypackage.client.resource.ApplicationResource;
 
 /**
- * LayerButton.
+ * LayerButton widget.
  *
  * @author David Debuck
  *

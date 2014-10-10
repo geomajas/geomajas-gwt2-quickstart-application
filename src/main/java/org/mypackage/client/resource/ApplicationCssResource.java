@@ -52,6 +52,13 @@ public interface ApplicationCssResource extends CssResource {
 	 *
 	 * @return the css class
 	 */
+	String infoPopupPanelScroll();
+
+	/**
+	 * Get a CSS style class.
+	 *
+	 * @return the css class
+	 */
 	String infoPopupPanelContent();
 
 	/**

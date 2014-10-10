@@ -21,7 +21,6 @@ import java.util.List;
  * list of features.
  *
  * @author Oliver May
- * @since 2.1.0
  */
 public class FeatureClickedEvent extends Event<FeatureClickedHandler> {
 

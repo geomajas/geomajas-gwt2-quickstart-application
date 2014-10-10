@@ -21,7 +21,7 @@ import org.mypackage.client.widget.layer.LayerLegend;
 import org.mypackage.client.widget.tooltip.ToolTip;
 
 /**
- * Application service class for easy access to Objects.
+ * Application service class for easy access.
  *
  * @author David Debuck.
  */

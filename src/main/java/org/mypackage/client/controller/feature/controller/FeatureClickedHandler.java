@@ -17,7 +17,6 @@ import com.google.web.bindery.event.shared.Event;
  * Interface for handling {@link FeatureClickedEvent}s.
  *
  * @author Oliver May
- * @since 2.1.0
  */
 public interface FeatureClickedHandler extends EventHandler {
 	/**
