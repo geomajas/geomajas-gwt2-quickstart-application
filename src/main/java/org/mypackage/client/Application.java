@@ -13,6 +13,9 @@ package org.mypackage.client;
 import com.google.gwt.core.client.EntryPoint;
 import com.google.gwt.user.client.ui.RootLayoutPanel;
 
+/**
+ * Application entry point.
+ */
 public class Application implements EntryPoint {
 
 	@Override

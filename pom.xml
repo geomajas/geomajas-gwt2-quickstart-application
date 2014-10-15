@@ -517,8 +517,8 @@
 	<properties>
 		<geotools-version>9.5</geotools-version>
 		<gwt-version>2.6.1</gwt-version>
-		<geomajas-build-tools-version>2.0.0</geomajas-build-tools-version>
-		<geomajas-client-gwt2-version>2.1.0-SNAPSHOT</geomajas-client-gwt2-version>
+		<geomajas-build-tools-version>2.4.0</geomajas-build-tools-version>
+		<geomajas-client-gwt2-version>2.1.1</geomajas-client-gwt2-version>
 		<gwt.compiler.skip>false</gwt.compiler.skip>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 	</properties>

@@ -13,13 +13,6 @@
 
 	<ui:with field='resource' type='org.mypackage.client.resource.ApplicationResource' />
 
-	<g:DockLayoutPanel unit="PX" width="100%" height="100%">
-		<!-- Page layout -->
-		<g:center>
-			<g:SimpleLayoutPanel>
-				<g:SimpleLayoutPanel ui:field='mapPanel' width="100%" height="100%" />
-			</g:SimpleLayoutPanel>
-		</g:center>
-	</g:DockLayoutPanel>
+	<g:Button ui:field="layerButton" styleName="{resource.css.layerButton}" />
 
 </ui:UiBinder>
