@@ -23,7 +23,7 @@ http://www.springframework.org/schema/context/spring-context-2.5.xsd"
 	<bean name="layerRailRoads" class="org.geomajas.layer.shapeinmem.ShapeInMemLayer">
 		<property name="layerInfo" ref="layerRailRoadsInfo" />
         <property name="url"
-				  value="classpath:org/mypackage/shapes/railroads/railroads.shp"/>
+				  value="classpath:org/geomajas/quickstart/gwt2/shapes/railroads/railroads.shp"/>
 	</bean>
 
 	<bean name="layerRailRoadsInfo" class="org.geomajas.configuration.VectorLayerInfo">

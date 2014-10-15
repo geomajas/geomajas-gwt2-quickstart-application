@@ -23,7 +23,7 @@ http://www.springframework.org/schema/context/spring-context-2.5.xsd"
 	<bean name="layerCountries" class="org.geomajas.layer.shapeinmem.ShapeInMemLayer">
 		<property name="layerInfo" ref="layerCountriesInfo" />
         <property name="url"
-				  value="classpath:org/mypackage/shapes/worldborders/world_countries.shp"/>
+				  value="classpath:org/geomajas/quickstart/gwt2/shapes/worldborders/world_countries.shp"/>
 	</bean>
 
 	<bean name="layerCountriesInfo" class="org.geomajas.configuration.VectorLayerInfo">

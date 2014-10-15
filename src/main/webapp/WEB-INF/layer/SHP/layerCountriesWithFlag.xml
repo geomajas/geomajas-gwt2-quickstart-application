@@ -23,7 +23,7 @@ http://www.springframework.org/schema/context/spring-context-2.5.xsd"
 	<bean name="layerCountriesWithFlag" class="org.geomajas.layer.shapeinmem.ShapeInMemLayer">
 		<property name="layerInfo" ref="layerCountriesWithFlagInfo" />
         <property name="url"
-				  value="classpath:org/mypackage/shapes/countrieswithflag/ne_10m_admin_0_countries.shp"/>
+				  value="classpath:org/geomajas/quickstart/gwt2/shapes/countrieswithflag/ne_10m_admin_0_countries.shp"/>
 	</bean>
 
 	<bean name="layerCountriesWithFlagInfo" class="org.geomajas.configuration.VectorLayerInfo">
