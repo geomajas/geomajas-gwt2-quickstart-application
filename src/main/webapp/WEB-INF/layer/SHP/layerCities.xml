@@ -23,7 +23,7 @@ http://www.springframework.org/schema/context/spring-context-2.5.xsd"
 	<bean name="layerCities" class="org.geomajas.layer.shapeinmem.ShapeInMemLayer">
 		<property name="layerInfo" ref="layerCitiesInfo" />
         <property name="url"
-				  value="classpath:org/mypackage/shapes/cities/cities.shp"/>
+				  value="classpath:org/geomajas/quickstart/gwt2/shapes/cities/cities.shp"/>
 	</bean>
 
 	<bean name="layerCitiesInfo" class="org.geomajas.configuration.VectorLayerInfo">

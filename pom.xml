@@ -342,7 +342,7 @@
 					<disableCastChecking>true</disableCastChecking>
 					<disableClassMetadata>true</disableClassMetadata>
 					<extraJvmArgs>-Xmx1200M -Xss1024k</extraJvmArgs>
-					<module>org.mypackage.Application</module>
+					<module>org.geomajas.quickstart.gwt2.Application</module>
 					<runTarget>index.html</runTarget>
 					<hostedWebapp>${project.build.directory}/${project.build.finalName}</hostedWebapp>
 					<copyWebapp>true</copyWebapp>
