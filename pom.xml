@@ -27,6 +27,19 @@
 		<url>https://github.com/geomajas/geomajas-gwt2-quickstart-application.git</url>
 	</scm>
 
+	<distributionManagement>
+		<repository>
+			<id>sonatype-nexus-staging</id>
+			<name>Nexus Release Repository</name>
+			<url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
+		</repository>
+		<snapshotRepository>
+			<id>geomajas-nexus-snapshots</id>
+			<name>Geomajas Nexus Snapshot</name>
+			<url>http://apps.geomajas.org/nexus/content/repositories/snapshots/</url>
+		</snapshotRepository>
+	</distributionManagement>
+
 	<licenses>
 		<license>
 			<name>GNU Affero General Public License, Version 3</name>
