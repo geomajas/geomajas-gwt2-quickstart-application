@@ -71,10 +71,10 @@ http://www.springframework.org/schema/util http://www.springframework.org/schema
 		</property>
 		<property name="initialBounds">
 			<bean class="org.geomajas.geometry.Bbox">
-				<property name="x" value="-20026376.393709917"/>
-				<property name="y" value="-20026376.393709917"/>
-				<property name="width" value="40052752.787419834"/>
-				<property name="height" value="40052752.787419834"/>
+				<property name="x" value="-2915614"/>
+				<property name="y" value="-4324501"/>
+				<property name="width" value="5600000"/>
+				<property name="height" value="21000000"/>
 			</bean>
 		</property>
 		<property name="layers">
