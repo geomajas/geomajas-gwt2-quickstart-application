@@ -23,9 +23,4 @@
 	<entry-point class="org.geomajas.quickstart.gwt2.client.Application"/>
 
 	<source path='client'/>
-
-	<!-- enable GWT Super dev mode -->
-	<add-linker name="xsiframe" />
-	<set-configuration-property name="devModeRedirectEnabled" value="true" />
-	<set-property name="compiler.useSourceMaps" value="true"/>
 </module>
