@@ -56,8 +56,8 @@
             WEB-INF/layer/SHP/layerCountriesWithFlag.xml
             WEB-INF/layer/SHP/clientLayerCountriesWithFlag.xml
 
-			WEB-INF/layer/SHP/layerRailRoads.xml
-			WEB-INF/layer/SHP/clientLayerRailRoads.xml
+			<!--WEB-INF/layer/SHP/layerRailRoads.xml-->
+			<!--WEB-INF/layer/SHP/clientLayerRailRoads.xml-->
 
 			<!-- security -->
             WEB-INF/security.xml
