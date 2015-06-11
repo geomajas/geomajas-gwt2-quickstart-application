@@ -63,10 +63,6 @@ public class InfoButton extends AbstractMapWidget implements IsWidget {
 		UIBINDER.createAndBindUi(this);
 		ApplicationResource.INSTANCE.css().ensureInjected();
 
-		ApplicationService.getInstance().getInfoPanel();
-		ApplicationService.getInstance().getInfoPanel().setLeft(5);
-		ApplicationService.getInstance().getInfoPanel().setTop(infoButton.getAbsoluteTop() + 35);
-
 		AbstractMapWidget.StopPropagationHandler preventWeirdBehaviourHandler = new AbstractMapWidget.StopPropagationHandler();
 		addDomHandler(preventWeirdBehaviourHandler, MouseDownEvent.getType());
 		addDomHandler(preventWeirdBehaviourHandler, MouseUpEvent.getType());
@@ -79,6 +75,9 @@ public class InfoButton extends AbstractMapWidget implements IsWidget {
 			@Override
 			public void onClick(final ClickEvent event) {
 
+				ApplicationService.getInstance().getInfoPanel();
+				ApplicationService.getInstance().getInfoPanel().setLeft(5);
+				ApplicationService.getInstance().getInfoPanel().setTop(infoButton.getAbsoluteTop() + 35);
 				boolean active = ApplicationService.getInstance().toggleFeatureClickedListener(false);
 				if (active) {
 					infoButton.setStyleName(ApplicationResource.INSTANCE.css().infoButtonActive());
