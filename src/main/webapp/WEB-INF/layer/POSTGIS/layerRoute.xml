@@ -1,0 +1,112 @@
+<!--
+  ~ This is part of Geomajas, a GIS framework, http://www.geomajas.org/.
+  ~
+  ~ Copyright 2008-2015 Geosparc nv, http://www.geosparc.com/, Belgium.
+  ~
+  ~ The program is available in open source according to the GNU Affero
+  ~ General Public License. All contributions in this program are covered
+  ~ by the Geomajas Contributors License Agreement. For full licensing
+  ~ details, see LICENSE.txt in the project root.
+  -->
+
+<beans
+        xmlns="http://www.springframework.org/schema/beans"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns:context="http://www.springframework.org/schema/context"
+        xsi:schemaLocation="
+http://www.springframework.org/schema/beans
+http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+http://www.springframework.org/schema/context
+http://www.springframework.org/schema/context/spring-context-2.5.xsd"
+        >
+
+    <!--
+    <bean id="postgisDataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
+        <property name="driverClass" value="org.postgresql.Driver" />
+        <property name="jdbcUrl" value="jdbc:postgresql://localhost:5432/iod" />
+        <property name="user" value="iod" />
+        <property name="password" value="iod" />
+    </bean>
+-->
+    <bean id="postgisDataSource" class="com.jolbox.bonecp.BoneCPDataSource" destroy-method="close">
+        <property name="driverClass" value="org.postgresql.Driver" />
+        <property name="jdbcUrl" value="jdbc:postgresql://localhost:5432/iod" />
+        <property name="username" value="iod"/>
+        <property name="password" value="iod"/>
+        <property name="maxConnectionsPerPartition" value="30"/>
+        <property name="minConnectionsPerPartition" value="10"/>
+        <property name="partitionCount" value="3"/>
+        <property name="acquireIncrement" value="5"/>
+        <property name="statementsCacheSize" value="100"/>
+    </bean>
+
+    <bean name="layerRoute" class="org.geomajas.layer.geotools.GeoToolsLayer">
+        <property name="layerInfo" ref="layerRouteInfo"/>
+        <property name="dataSource" ref="postgisDataSource"/>
+        <property name="parameters">
+            <list>
+                <bean class="org.geomajas.configuration.Parameter">
+                    <property name="name" value="namespace" />
+                    <property name="value" value="postgis" />
+                </bean>
+                <bean class="org.geomajas.configuration.Parameter">
+                    <property name="name" value="dbtype" />
+                    <property name="value" value="postgis" />
+                </bean>
+            </list>
+        </property>
+   </bean>
+
+    <bean name="layerRouteInfo" class="org.geomajas.configuration.VectorLayerInfo">
+        <property name="layerType" value="MULTILINESTRING"/>
+        <property name="crs" value="EPSG:2154"/>
+        <property name="maxExtent">
+            <bean class="org.geomajas.geometry.Bbox">
+                <property name="x" value="720987.5"/>
+                <property name="y" value="6263159.3"/>
+                <property name="maxX" value="848252.2"/>
+                <property name="maxY" value="6373798.9"/>
+            </bean>
+        </property>
+        <property name="featureInfo" ref="layerRouteFeatureInfo" />
+        <property name="namedStyleInfos">
+            <list>
+                <ref bean="layerRouteStyleInfo" />
+            </list>
+        </property>
+    </bean>
+
+    <bean class="org.geomajas.configuration.FeatureInfo" name="layerRouteFeatureInfo">
+        <property name="dataSourceName" value="route"/>
+        <property name="identifier">
+            <bean class="org.geomajas.configuration.PrimitiveAttributeInfo">
+                <property name="label" value="ID"/>
+                <property name="name" value="id"/>
+                <property name="type" value="STRING"/>
+            </bean>
+        </property>
+        <property name="geometryType">
+            <bean class="org.geomajas.configuration.GeometryAttributeInfo">
+                <property name="name" value="geom"/>
+                <property name="editable" value="false"/>
+            </bean>
+        </property>
+
+        <property name="attributes">
+            <list>
+                <bean class="org.geomajas.configuration.PrimitiveAttributeInfo">
+                    <property name="label" value="Numero"/>
+                    <property name="name" value="numero"/>
+                    <property name="editable" value="true"/>
+                    <property name="identifying" value="true"/>
+                    <property name="type" value="STRING"/>
+                </bean>
+            </list>
+        </property>
+    </bean>
+
+    <bean class="org.geomajas.configuration.NamedStyleInfo" name="layerRouteStyleInfo">
+        <property name="sldLocation" value="WEB-INF/layer/layerRoute.sld" />
+    </bean>
+
+</beans>

@@ -20,45 +20,14 @@ http://www.springframework.org/schema/util http://www.springframework.org/schema
 http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.0.xsd
 http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.0.xsd">
 
-	<context:component-scan base-package="org.geomajas"
-		name-generator="org.geomajas.spring.GeomajasBeanNameGenerator" />
-
-	<!-- Instructs Spring to perform declarative transaction management on annotated
-		classes -->
-	<tx:annotation-driven transaction-manager="transactionManager" />
-
-	<bean id="transactionManager" class="org.geomajas.layer.geotools.GeoToolsTransactionManager">
-	</bean>
-
-	<bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
-        <property name="properties">
-            <value>
-                geomajasCacheLocation=${java.io.tmpdir}/geomajas/enduser-application-gwt2-trunk
-            </value>
-        </property>
-        <property name="ignoreUnresolvablePlaceholders" value="true" />
-    </bean>
-
-	<bean name="security.securityInfo" class="org.geomajas.security.SecurityInfo">
-		<property name="loopAllServices" value="false" />
-		<property name="securityServices">
-			<list>
-				<bean class="org.geomajas.security.allowall.AllowAllSecurityService" />
-			</list>
-		</property>
-	</bean>
-
-	<bean name="app"
-		class="org.geomajas.configuration.client.ClientApplicationInfo">
-		<property name="maps">
-			<list>
-				<ref bean="mapMain" />
-			</list>
-		</property>
-<!--
-		<property name="widgetInfo">
-		</property>
--->
+	<bean class="org.geomajas.configuration.client.ClientVectorLayerInfo"
+		id="clientLayerRoute">
+		<property name="serverLayerId" value="layerRoute" />
+		<property name="label" value="Route" />
+		<property name="visible" value="false" />
+		<property name="maximumScale" value="1:100" />
+		<property name="minimumScale" value="1:50000" />
+		<property name="namedStyleInfo" ref="layerRouteStyleInfo" />
 	</bean>
 
 </beans>

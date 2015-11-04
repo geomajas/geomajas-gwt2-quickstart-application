@@ -44,9 +44,15 @@
             WEB-INF/layer/WMS/clientLayerSimplifiedCountriesWms.xml
             WEB-INF/layer/WMS/layerSimplifiedCountriesWms.xml
 
-			<!-- WFS layer -->
+<!--
+			&lt;!&ndash; WFS layer &ndash;&gt;
             WEB-INF/layer/WFS/layerSimplifiedCountriesWFS.xml
             WEB-INF/layer/WFS/clientLayerSimplifiedCountriesWfs.xml
+-->
+
+			<!-- POSTGIS layer -->
+			WEB-INF/layer/POSTGIS/clientLayerRoute.xml
+			WEB-INF/layer/POSTGIS/layerRoute.xml
 
 			<!-- layers based on a SHP file -->
 			WEB-INF/layer/SHP/layerCountries.xml

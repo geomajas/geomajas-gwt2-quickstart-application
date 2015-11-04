@@ -19,7 +19,7 @@
 	<name>Geomajas GWT2 quickstart application</name>
 	<description>Geomajas GWT2 quickstart application</description>
 	<url>http://www.geomajas.org/</url>
-	
+
 	<scm>
 		<connection>scm:git:git@github.com:geomajas/geomajas-gwt2-quickstart-application.git</connection>
 		<developerConnection>scm:git:git@github.com:geomajas/geomajas-gwt2-quickstart-application.git</developerConnection>
@@ -123,6 +123,18 @@
             <version>${geotools-version}</version>
         </dependency>
 
+		<dependency>
+			<groupId>org.geotools.jdbc</groupId>
+			<artifactId>gt-jdbc-postgis</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>c3p0</groupId>
+			<artifactId>c3p0</artifactId>
+			<version>0.9.1.2</version>
+		</dependency>
+
+
 		<!-- Hibernate layer can be removed if not needed, but the "Road" class needs the Hibernate stuff -->
 		<dependency>
 			<groupId>org.geomajas.plugin</groupId>
@@ -192,6 +204,14 @@
 		</dependency>
 		-->
 
+		<dependency>
+			<groupId>org.postgis</groupId>
+			<artifactId>postgis-jdbc</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>postgresql</groupId>
+			<artifactId>postgresql</artifactId>
+		</dependency>
 
 		<!-- Google dependencies -->
 		<dependency>
@@ -223,6 +243,12 @@
 		<dependency>
 			<groupId>ch.qos.logback</groupId>
 			<artifactId>logback-classic</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>com.jolbox</groupId>
+			<artifactId>bonecp</artifactId>
+			<version>0.8.0.RELEASE</version>
 		</dependency>
 	</dependencies>
 
@@ -391,7 +417,7 @@
 					</filesets>
 				</configuration>
 			</plugin>
-			
+
 			<!-- deploy to development server -->
 			<plugin>
 				<groupId>org.codehaus.cargo</groupId>
